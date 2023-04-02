@@ -26,14 +26,22 @@ RSpec.describe Resident, type: :model do
     expect(subject).to be_valid
   end
 
+  it 'is not valid with invalid email' do
+    subject.email = '99999999999'
+    expect(subject).to_not be_valid
+    expect(subject.errors.messages[:email]).to include("Email invalido")
+  end
+
   it 'is not valid with invalid cpf' do
     subject.cpf = '99999999999'
     expect(subject).to_not be_valid
+    expect(subject.errors.messages[:cpf]).to include("CPF invalido")
   end
 
   it 'is not valid with invalid cns' do
     subject.cns = '999999999999999'
     expect(subject).to_not be_valid
+    expect(subject.errors.messages[:cns]).to include("CNS invalido")
   end
 
   it 'is not valid with invalid birth_date' do
