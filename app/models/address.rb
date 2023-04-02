@@ -3,13 +3,13 @@
 # Table name: addresses
 #
 #  id           :bigint           not null, primary key
-#  cep          :string
-#  city         :string
+#  cep          :string           not null
+#  city         :string           not null
 #  complement   :string
 #  ibge         :string
-#  neighborhood :string
-#  state        :string
-#  street       :string
+#  neighborhood :string           not null
+#  state        :string           not null
+#  street       :string           not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  resident_id  :bigint
