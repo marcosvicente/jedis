@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: residents
+#
+#  id           :bigint           not null, primary key
+#  active       :boolean          not null
+#  birth_date   :string           not null
+#  cns          :string           not null
+#  cpf          :string           not null
+#  email        :string           not null
+#  full_name    :string           not null
+#  phone_number :string           not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
 class Resident < ApplicationRecord
   include Cns
 
@@ -5,7 +20,7 @@ class Resident < ApplicationRecord
   has_one_attached :picture
   accepts_nested_attributes_for :address
 
-  validates :full_name, :cpf, :cns, :email, :birth_date, :phone_number, presence: true
+  validates :full_name, :cpf, :cns, :email, :birth_date, :phone_number, :birth_date, :cns,  presence: true
   validate :cpf_is_valid?, :email_is_valid?, :cns_is_valid?, :birth_date_valid?
 
   after_create :send_welcome

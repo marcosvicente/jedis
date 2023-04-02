@@ -1,39 +1,29 @@
+# == Schema Information
+#
+# Table name: residents
+#
+#  id           :bigint           not null, primary key
+#  active       :boolean          not null
+#  birth_date   :string           not null
+#  cns          :string           not null
+#  cpf          :string           not null
+#  email        :string           not null
+#  full_name    :string           not null
+#  phone_number :string           not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
 require 'rails_helper'
 
 RSpec.describe Resident, type: :model do
-  subject do
-    described_class.new(
-      full_name: 'full_name',
-      cpf: '98835307066',
-      cns: '187329617340002',
-      email: 'test@test.com',
-      phone_number: '11999999999',
-      birth_date: Time.now
-    )
-  end
+  subject(:resident) { build(:resident, :active) }
+  it { should validate_presence_of(:full_name) }
+  it { should validate_presence_of(:cpf) }
+  it { should validate_presence_of(:email) }
+  it { should validate_presence_of(:phone_number) }
 
   it 'is valid with valid attributes' do
     expect(subject).to be_valid
-  end
-
-  it 'is not valid without a full_name' do
-    subject.full_name = nil
-    expect(subject).to_not be_valid
-  end
-
-  it 'is not valid without a cpf' do
-    subject.cpf = nil
-    expect(subject).to_not be_valid
-  end
-
-  it 'is not valid without a email' do
-    subject.email = nil
-    expect(subject).to_not be_valid
-  end
-
-  it 'is not valid without a phone_number' do
-    subject.phone_number = nil
-    expect(subject).to_not be_valid
   end
 
   it 'is not valid with invalid cpf' do
