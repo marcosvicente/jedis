@@ -49,7 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_201339) do
     t.string "neighborhood", null: false
     t.string "city", null: false
     t.string "state", null: false
-    t.string "ibge", null: false
+    t.string "ibge"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "resident_id"

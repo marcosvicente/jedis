@@ -21,10 +21,11 @@ class ResidentsController < ApplicationController
 
   def create
     @resident = Resident.new(register_params)
+    @resident.active = true
     if @resident.save
       redirect_to residents_path
     else
-      redirect_to action: :new
+      redirect_to action: :new, status: :unprocessable_entity 
     end
   end
 

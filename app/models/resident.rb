@@ -39,7 +39,7 @@ class Resident < ApplicationRecord
   end
 
   def birth_date_valid?
-    date_time = birth_date.to_datetime
+    date_time = self.birth_date.to_datetime
     year = date_time.year
     actual_year = DateTime.now.year
 
